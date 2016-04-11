@@ -12,3 +12,8 @@ Date: 4/5/2016
 
 ## Image Concept
 <img src="drawn_concept.png" width="400px">
+
+## To Do's
+- Need to think about how to make the application better than a spreadsheet or paper log
+- Need to strongly thing about user interaction and experience
+- Need to come up with User Stories
