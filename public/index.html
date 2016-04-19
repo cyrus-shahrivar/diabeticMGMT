@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Testing</title>
+    <title>Home</title>
     <link rel="stylesheet" href="style.css">
     <style>
      /* d3 styling */
@@ -23,85 +23,99 @@
   </head>
   <body>
     <h1>Diabetic MGMT</h1>
+    <h2>Input</h2>
     <form class="">
-      <input type="text" placeholder="Blood Glucose"><br>
-      <input type="text" placeholder="Food"><br>
-      <input type="text" placeholder="Meal Insulin"><br>
-      <input type="text" placeholder="Correction Insulin"><br>
-      <input type="text" placeholder="24-hour Insulin"><br>
-      <input type="text" placeholder="Exercise"><br>
+      <input type="date" placeholder="Date"><br>
+      <input type="time" placeholder="Time"><br>
+      <input type="number" placeholder="Blood Glucose"><br>
+      <input type="text" placeholder="Meal Description"><br>
+      <input type="number" placeholder="Meal Amount"><br>
+      <input type="number" placeholder="Meal Insulin"><br>
+      <input type="number" placeholder="Correction Insulin"><br>
+      <input type="text" placeholder="Long Acting Insulin"><br>
+      <input type="number" placeholder="Water"><br>
+      <input type="number" placeholder="Exercise Time"><br>
+      <input type="number" placeholder="Exercise Description"><br>
       <input type="button" name="name" value="Submit"><br>
     </form>
+    <h2>Graphs</h2>
+    <div id="graphs">
+
+    </div>
+    <h2>Recommendations</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
     <script>
-    //program variables
-    var w = 600,
-        h = 200;
+      //program variables
+      var w = 600,
+          h = 200;
 
-    var padding = 40;
+      var padding = 40;
 
-    var array = [];
-    // random data filling
-    var numDataPoints = 50;
-    var xRange = Math.random() * 500;
-    var yRange = Math.random() * 500;
-    for (var i = 0; i < numDataPoints; i++) {
-        var newNumber1 = Math.round(Math.random() * xRange);
-        var newNumber2 = Math.round(Math.random() * yRange);
-        array.push([newNumber1, newNumber2]);
-    }
+      var array = [];
+      // random data filling
+      var numDataPoints = 50;
+      var xRange = Math.random() * 500;
+      var yRange = Math.random() * 500;
+      for (var i = 0; i < numDataPoints; i++) {
+          var newNumber1 = Math.round(Math.random() * xRange);
+          var newNumber2 = Math.round(Math.random() * yRange);
+          array.push([newNumber1, newNumber2]);
+      }
 
-    //scaling
-    var xScale = d3.scale.linear()
-                  .domain([d3.min(array, function(d){return d[0]}),d3.max(array, function(d){return d[0]})])
-                  .range([0 + padding, w - padding]);
+      //scaling
+      var xScale = d3.scale.linear()
+                    .domain([d3.min(array, function(d){return d[0]}),d3.max(array, function(d){return d[0]})])
+                    .range([0 + padding, w - padding]);
 
-    var yScale = d3.scale.linear()
-                  .domain([d3.min(array, function(d){return d[1]}),d3.max(array, function(d){return d[1]})])
-                  .range([h - padding, 0 + padding]);
+      var yScale = d3.scale.linear()
+                    .domain([d3.min(array, function(d){return d[1]}),d3.max(array, function(d){return d[1]})])
+                    .range([h - padding, 0 + padding]);
 
-                  // will make "y" values actually go bottom-up (opp of coord system).range([h - padding, 0 + padding]);
-    //creates svg
-    var svg = d3.select('body').append('svg')
-                .attr('width', w)
-                .attr('height', h);
+                    // will make "y" values actually go bottom-up (opp of coord system).range([h - padding, 0 + padding]);
+      //creates svg
+      var svg = d3.select('#graphs').append('svg')
+                  .attr('width', w)
+                  .attr('height', h);
 
-    //creates, animates circles
-    var circles = svg.selectAll('circle')
-                     .data(array)
-                     .enter()
-                     .append('circle')
-                     .attr('cx', function(d){return xScale(d[0])})
-                     .attr('cy', 0)
-                     .attr('r', 0)
-                     .transition()
-                     .delay(function(d, i) {
-                        return i * 100;
-                     })
-                       .duration(2000)
-                       .ease('linear')
-                       .attr('cy', function(d){return yScale(d[1])})
-                       .attr('r', 4)
-                       .attr('fill', function(d,i){return 'rgb(' + yScale(d[1]) + ',0,0)'});
+      //creates, animates circles
+      var circles = svg.selectAll('circle')
+                       .data(array)
+                       .enter()
+                       .append('circle')
+                       .attr('cx', function(d){return xScale(d[0])})
+                       .attr('cy', 0)
+                       .attr('r', 0)
+                       .transition()
+                       .delay(function(d, i) {
+                          return i * 100;
+                       })
+                         .duration(2000)
+                         .ease('linear')
+                         .attr('cy', function(d){return yScale(d[1])})
+                         .attr('r', 4)
+                         .attr('fill', function(d,i){return 'rgb(' + yScale(d[1]) + ',0,0)'});
 
-    //creates axes
-    var xAxis = d3.svg.axis()
-                  .scale(xScale)
-                  .orient('bottom');
+      //creates axes
+      var xAxis = d3.svg.axis()
+                    .scale(xScale)
+                    .orient('bottom');
 
 
-    var yAxis = d3.svg.axis()
-                  .scale(yScale)
-                  .orient('left');
+      var yAxis = d3.svg.axis()
+                    .scale(yScale)
+                    .orient('left');
 
-    svg.append('g')
-       .attr('transform', 'translate(0,' + (h - padding) + ')')
-       .attr('class', 'axis')
-       .call(xAxis);
+      svg.append('g')
+         .attr('transform', 'translate(0,' + (h - padding) + ')')
+         .attr('class', 'axis')
+         .call(xAxis);
 
-    svg.append('g')
-       .attr('transform', 'translate(' + (padding) + ',0)')
-       .attr('class', 'axis')
-       .call(yAxis);
+      svg.append('g')
+         .attr('transform', 'translate(' + (padding) + ',0)')
+         .attr('class', 'axis')
+         .call(yAxis);
 
     </script>
     <script type="text/javascript" src="app.js"></script>
