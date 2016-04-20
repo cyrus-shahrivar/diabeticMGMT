@@ -4,6 +4,7 @@ Author: Cyrus Shahrivar
 Date: 4/5/2016
 
 ## Outline of Concept
+- 3 screen app (homescreen, login screen, settings screen)
 - Include forms to allow for input of vitals
 - Graph vitals after hitting update button
 - Hit USDA API to show food information
