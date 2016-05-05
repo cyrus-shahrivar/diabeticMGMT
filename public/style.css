@@ -4,7 +4,7 @@ body {
 
 header {
   color: rgba(200,0,0,1);
-  text-align: center;
+  /*text-align: center;*/
 }
 
 #plusSign {
