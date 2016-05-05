@@ -19,23 +19,24 @@
         font-size: 11px;
     }
     </style>
+    <script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
     <script src="d3.js" charset="utf-8"></script>
   </head>
   <body>
-    <h1>Diabetic MGMT</h1>
+    <h1>Diabetic MGMT +</h1>
     <h2>Input</h2>
-    <form class="">
-      <input type="date" placeholder="Date"><br>
-      <input type="time" placeholder="Time"><br>
-      <input type="number" placeholder="Blood Glucose"><br>
-      <input type="text" placeholder="Meal Description"><br>
+    <form id="vitals">
+      <input type="date" placeholder="Date" id="date"><br>
+      <input type="time" placeholder="Time" id="time"><br>
+      <input type="number" placeholder="Blood Glucose" id="bg"><br>
+      <!-- <input type="text" placeholder="Meal Description"><br>
       <input type="number" placeholder="Meal Amount"><br>
       <input type="number" placeholder="Meal Insulin"><br>
       <input type="number" placeholder="Correction Insulin"><br>
       <input type="text" placeholder="Long Acting Insulin"><br>
       <input type="number" placeholder="Water"><br>
       <input type="number" placeholder="Exercise Time"><br>
-      <input type="number" placeholder="Exercise Description"><br>
+      <input type="number" placeholder="Exercise Description"><br> -->
       <input type="button" name="name" value="Submit"><br>
     </form>
     <h2>Graphs</h2>
