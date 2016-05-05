@@ -35,7 +35,7 @@ app.listen(app.get('port'), function() {
 
 app.get('/users', function(req,res){
   User.find().exec(function (err, users) {
-    res.send(users);
+    res.send(JSON.stringify(users));
   });
 });
 

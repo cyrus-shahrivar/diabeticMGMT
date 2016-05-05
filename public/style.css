@@ -2,6 +2,12 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
+header {
   color: rgba(200,0,0,1);
+  text-align: center;
+}
+
+#plusSign {
+  font-size: 3em;
+  margin: 0;
 }
