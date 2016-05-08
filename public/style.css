@@ -4,10 +4,51 @@ body {
 
 header {
   color: rgba(200,0,0,1);
-  /*text-align: center;*/
+  font-size: 2em;
 }
 
-#plusSign {
-  font-size: 3em;
-  margin: 0;
+#M {
+  color: rgba(150,0,0,1);
+}
+
+#G {
+  color: rgba(125,0,0,1);
+}
+
+#M2 {
+  color: rgba(100,0,0,1);
+}
+
+#T {
+  color: rgba(50,0,0,1);
+}
+
+#plus {
+  color: rgba(0,0,0,1);
+}
+
+#date {
+  font-size: 1em;
+  border: rgba(150,0,0,1) solid 1px;
+  border-radius: 5px;
+  margin: 2px auto;
+}
+
+#time {
+  font-size: 1em;
+  margin: 2px auto;
+  border: rgba(150,0,0,1) solid 1px;
+  border-radius: 5px;
+}
+
+#bg {
+  font-size: 1em;
+  border: rgba(150,0,0,1) solid 1px;
+  border-radius: 5px;
+  margin: 2px auto;
+}
+
+#submit {
+  font-size: 1em;
+  margin: 2px auto;
 }

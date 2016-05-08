@@ -1,14 +1,18 @@
 console.log("connected to app.js");
 $(document).ready(function(){
+  //gets graph data from database, generates graph
   $.ajax({
     url: "/users",
     method: "GET"
   }).done(function(data){
     dataArray = JSON.parse(data);
-    console.log(dataArray);
   }).done(d3stuff);
 
     dataArray = [];
+    // set the date and time to today by default
+    $("#date").val(new Date().toISOString().substring(0, 10));
+    $("#time").val(new Date().toTimeString().substring(0,5));
+    // grabs values from form, sends to database, refreshes graph(s)
     var sendVitals = function(){
       var bloodGlucose = $("#bg").val();
       var date = $("#date").val();
@@ -23,17 +27,24 @@ $(document).ready(function(){
       }).done(function(){
         $("#graphs").html("");
         $("#vitals").trigger("reset");
+        // set the date and time to today by default
+        $("#date").val(new Date().toISOString().substring(0, 10));
+        $("#time").val(new Date().toTimeString().substring(0,5));
         $.ajax({
           url: "/users",
           method: "GET"
         }).done(function(data){
           dataArray = JSON.parse(data);
-          console.log(dataArray);
         }).done(d3stuff);
       });
     };
 
-    $("#submit").on("click", sendVitals);
+    //triggers sendvitals function on submit
+    $("#submit").on("click", function(e){
+        e.preventDefault();
+        sendVitals();
+
+    });
 
 
 
