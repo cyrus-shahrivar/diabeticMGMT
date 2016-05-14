@@ -28,9 +28,9 @@
       <h1>Diabetic<span id="M">M</span><span id="G">G</span><span id="M2">M</span><span id="T">T</span><span id="plus"> +</span></h1>
     </header>
     <form id="vitals">
-      <input type="date" placeholder="Date" id="date"><br>
-      <input type="time" placeholder="Time" id="time"><br>
-      <input type="number" placeholder="Blood Glucose" id="bg"><br>
+      <input type="date" id="date"><br>
+      <input type="time" id="time"><br>
+      <input type="number" placeholder="Enter Blood Glucose" id="bg"><br>
       <!-- <input type="text" placeholder="Meal Description"><br>
       <input type="number" placeholder="Meal Amount"><br>
       <input type="number" placeholder="Meal Insulin"><br>
@@ -45,13 +45,17 @@
       <h2>Data:</h2>
     </div> -->
     <h2>Blood Glucose History</h2>
+    <input type="button" name="name" value="Past1Week" id="past1week">
+    <input type="button" name="name" value="Past2Weeks" id="past2weeks">
+    <input type="button" name="name" value="AllHistory" id="allhistory">
     <div id="graphs">
 
     </div>
-    <h2>Tips</h2>
+
+    <!-- <h2>Tips</h2>
     <p>
-      --Generic tips here--
-    </p>
+      Generic tips here
+    </p> -->
     <script type="text/javascript" src="app.js"></script>
   </body>
 </html>

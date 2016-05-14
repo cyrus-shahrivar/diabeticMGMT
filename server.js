@@ -40,6 +40,32 @@ app.get('/users', function(req,res){
 });
 
 
+app.get('/past1week', function(req,res){
+  // "2016-02-08T09:24:00Z" format needed
+  var now = new Date();
+  var oneWeekAgo = new Date();
+  oneWeekAgo = oneWeekAgo.setDate(now.getDate()-7);
+  now = now.toISOString();
+  oneWeekAgo = new Date(oneWeekAgo);
+  oneWeekAgo = oneWeekAgo.toISOString();
+  User.find().where("updated_at").gt(oneWeekAgo).lt(now).exec(function (err, users) {
+    res.send(JSON.stringify(users));
+  });
+});
+
+app.get('/past2weeks', function(req,res){
+  // "2016-02-08T09:24:00Z" format needed
+  var now = new Date();
+  var twoWeeksAgo = new Date();
+  twoWeeksAgo = twoWeeksAgo.setDate(now.getDate()-14);
+  now = now.toISOString();
+  twoWeeksAgo = new Date(twoWeeksAgo);
+  twoWeeksAgo = twoWeeksAgo.toISOString();
+  User.find().where("updated_at").gt(twoWeeksAgo).lt(now).exec(function (err, users) {
+    res.send(JSON.stringify(users));
+  });
+});
+
 //creates a new user
 app.post('/users', function (req, res) {
   var user = new User(req.body);

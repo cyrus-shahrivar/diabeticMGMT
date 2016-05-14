@@ -43,9 +43,55 @@ $(document).ready(function(){
     $("#submit").on("click", function(e){
         e.preventDefault();
         sendVitals();
-
+        $(window).on('resize', function(){
+            // $("#graphs").animate(sendVitals);
+            $("#graphs").html("");
+            d3stuff();
+        });
     });
 
+    $("#allhistory").on("click", function(e){
+        console.log(e);
+        e.preventDefault();
+        sendVitals();
+        $(window).on('resize', function(){
+            // $("#graphs").animate(sendVitals);
+            $("#graphs").html("");
+            d3stuff();
+        });
+    });
+
+    $("#past1week").on("click", function(e){
+        e.preventDefault();
+        $("#graphs").html("");
+        $.ajax({
+          url: "/past1week",
+          method: "GET"
+        }).done(function(data){
+          dataArray = JSON.parse(data);
+        }).done(d3stuff);
+        $(window).on('resize', function(){
+            // $("#graphs").animate(sendVitals);
+            $("#graphs").html("");
+            d3stuff();
+        });
+    });
+
+    $("#past2weeks").on("click", function(e){
+        e.preventDefault();
+        $("#graphs").html("");
+        $.ajax({
+          url: "/past2weeks",
+          method: "GET"
+        }).done(function(data){
+          dataArray = JSON.parse(data);
+        }).done(d3stuff);
+        $(window).on('resize', function(){
+            // $("#graphs").animate(sendVitals);
+            $("#graphs").html("");
+            d3stuff();
+        });
+    });
 
 
     ///////////////////////////////////////////// D3 GRAPH CODE BELOW
@@ -53,7 +99,7 @@ $(document).ready(function(){
 
       //program variables
       newArray = [];
-      var w = 600,
+      var w = window.innerWidth,
           h = 200;
 
       var padding = 40;
