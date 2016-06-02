@@ -12,7 +12,7 @@ Date: 4/5/2016
   - It might be good to have an easy way to adjust the amount of food had that isn't just form input, but maybe a "volume control" type of input
 
 ## Image Concept
-<img src="drawn_concept.png" width="400px">
+<img src="concept.png" width="600px">
 
 ## To Do's
 - Need to think about how to make the application better than a spreadsheet or paper log
